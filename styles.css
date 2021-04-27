@@ -1,0 +1,51 @@
+/* stylelint-disable max-line-length */
+
+/* Remove any border from the iFrame. */
+.block_onlinesurveyqa #block_onlinesurveyqa_contentframe {
+    border: 0;
+}
+
+/* Set the basic size of the iFrame in compact and detailed view. */
+.block_onlinesurveyqa #block_onlinesurveyqa_contentframe {
+    width: 100%;
+}
+.block_onlinesurveyqa #block_onlinesurveyqa_contentframe.block_onlinesurveyqa_compact {
+    height: 150px;
+}
+.block_onlinesurveyqa #block_onlinesurveyqa_contentframe.block_onlinesurveyqa_detailed.block_onlinesurveyqa_soap {
+    height: 60px;
+}
+.block_onlinesurveyqa #block_onlinesurveyqa_contentframe.block_onlinesurveyqa_detailed.block_onlinesurveyqa_lti {
+    height: 120px;
+}
+/* In the detailed view, increase the height as soon as there are surveys. */
+.block_onlinesurveyqa_surveysexist.block_onlinesurveyqa_surveycount_1 #block_onlinesurveyqa_contentframe.block_onlinesurveyqa_detailed.block_onlinesurveyqa_soap {
+    height: 60px;
+}
+.block_onlinesurveyqa_surveysexist.block_onlinesurveyqa_surveycount_1 #block_onlinesurveyqa_contentframe.block_onlinesurveyqa_detailed.block_onlinesurveyqa_lti {
+    height: 110px;
+}
+.block_onlinesurveyqa_surveysexist.block_onlinesurveyqa_surveycount_2 #block_onlinesurveyqa_contentframe.block_onlinesurveyqa_detailed.block_onlinesurveyqa_soap {
+    height: 70px;
+}
+.block_onlinesurveyqa_surveysexist.block_onlinesurveyqa_surveycount_2 #block_onlinesurveyqa_contentframe.block_onlinesurveyqa_detailed.block_onlinesurveyqa_lti {
+    height: 165px;
+}
+.block_onlinesurveyqa_surveysexist.block_onlinesurveyqa_surveycount_3 #block_onlinesurveyqa_contentframe.block_onlinesurveyqa_detailed.block_onlinesurveyqa_soap {
+    height: 95px;
+}
+.block_onlinesurveyqa_surveysexist.block_onlinesurveyqa_surveycount_3 #block_onlinesurveyqa_contentframe.block_onlinesurveyqa_detailed.block_onlinesurveyqa_lti {
+    height: 220px;
+}
+.block_onlinesurveyqa_surveysexist.block_onlinesurveyqa_surveycount_gt3 #block_onlinesurveyqa_contentframe.block_onlinesurveyqa_detailed.block_onlinesurveyqa_soap {
+    height: 120px;
+}
+.block_onlinesurveyqa_surveysexist.block_onlinesurveyqa_surveycount_gt3 #block_onlinesurveyqa_contentframe.block_onlinesurveyqa_detailed.block_onlinesurveyqa_lti {
+    height: 275px;
+}
+
+/* Style the 'All surveys' button to open the modal. */
+.block_onlinesurveyqa_allsurveys {
+    margin-top: 15px;
+    text-align: center;
+}
