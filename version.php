@@ -15,18 +15,32 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
+<<<<<<< HEAD
  * Plugin "Evaluations (evasys)"
  *
  * @package    block_onlinesurvey
  * @copyright  2018 Soon Systems GmbH on behalf of evasys GmbH
+=======
+ * Plugin "Evaluations (EvaSys)"
+ *
+ * @package    block_onlinesurveyqa
+ * @copyright  2018 Soon Systems GmbH on behalf of Electric Paper Evaluationssysteme GmbH
+>>>>>>> Initial commit
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
+<<<<<<< HEAD
 $plugin->version = 2022072600;
 $plugin->component = 'block_onlinesurvey';
 $plugin->release = 'v4.0-r1';
 $plugin->requires = 2022041900;
 $plugin->supported = [400, 400];
+=======
+$plugin->version = 2020060403;
+$plugin->component = 'block_onlinesurveyqa';
+$plugin->release = 'v3.8-r4';
+$plugin->requires = 2019111800;
+>>>>>>> Initial commit
 $plugin->maturity = MATURITY_STABLE;
