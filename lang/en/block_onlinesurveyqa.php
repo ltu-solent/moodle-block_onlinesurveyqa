@@ -28,7 +28,7 @@ defined('MOODLE_INTERNAL') || die();
 /* General.
 /*************************/
 
-$string['pluginname'] = 'Evaluations (EvaSys)';
+$string['pluginname'] = 'Evaluations (EvaSys) QAHE';
 $string['lti'] = 'LTI';
 $string['soap'] = 'SOAP';
 
