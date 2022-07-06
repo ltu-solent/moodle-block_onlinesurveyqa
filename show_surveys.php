@@ -17,7 +17,7 @@
 /**
  * Plugin "Evaluations (evasys)"
  *
- * @package    block_onlinesurvey
+ * @package    block_onlinesurveyqa
  * @copyright  2018 Soon Systems GmbH on behalf of evasys GmbH
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -27,12 +27,12 @@ require_once(dirname(__FILE__).'/locallib.php');
 
 require_login();
 $systemcontext = context_system::instance();
-require_capability('block/onlinesurvey:view', $systemcontext);
+require_capability('block/onlinesurveyqa:view', $systemcontext);
 
 global $USER, $PAGE;
 
 // Block settings.
-$config = get_config("block_onlinesurvey");
+$config = get_config("block_onlinesurveyqa");
 $error = '';
 $debugmode = false;
 
@@ -57,23 +57,23 @@ if (isset($config)) {
 
         $modalzoom = optional_param('modalZoom', 0, PARAM_INT);
 
-        if ($config->presentation == BLOCK_ONLINESURVEY_PRESENTATION_BRIEF && !$modalzoom) {
-            $css[] = $CFG->wwwroot.'/blocks/onlinesurvey/style/block_onlinesurvey_iframe_compact.css';
+        if ($config->presentation == BLOCK_ONLINESURVEYQA_PRESENTATION_BRIEF && !$modalzoom) {
+            $css[] = $CFG->wwwroot.'/blocks/onlinesurveyqa/style/block_onlinesurveyqa_iframe_compact.css';
         }
 
         if ($connectiontype == 'SOAP') {
-            $css[] = $CFG->wwwroot.'/blocks/onlinesurvey/style/block_onlinesurvey_iframe_detail_soap.css';
+            $css[] = $CFG->wwwroot.'/blocks/onlinesurveyqa/style/block_onlinesurveyqa_iframe_detail_soap.css';
         }
 
-        $css[] = $CFG->wwwroot.'/blocks/onlinesurvey/lib/fonts/font-awesome-4.7.0/css/font-awesome.min.css';
+        $css[] = $CFG->wwwroot.'/blocks/onlinesurveyqa/lib/fonts/font-awesome-4.7.0/css/font-awesome.min.css';
     } else {
-        $error = get_string('error_userid_not_found', 'block_onlinesurvey').'<br>';
+        $error = get_string('error_userid_not_found', 'block_onlinesurveyqa').'<br>';
     }
 } else {
-    $error = get_string('error_config_not_accessible', 'block_onlinesurvey');
+    $error = get_string('error_config_not_accessible', 'block_onlinesurveyqa');
 }
 
-$title = get_string('pluginname', 'block_onlinesurvey');
+$title = get_string('pluginname', 'block_onlinesurveyqa');
 if (isset($config) && !empty($config)) {
 
     // Get block title from block setting.
@@ -108,16 +108,16 @@ if (!empty($error)) {
     $context = context_system::instance();
     if (has_capability('moodle/site:config', $context)) {
         if ($error) {
-            echo  get_string('error_occured', 'block_onlinesurvey', $error);
+            echo  get_string('error_occured', 'block_onlinesurveyqa', $error);
         }
     } else if ($debugmode) {
-        echo  get_string('error_occured', 'block_onlinesurvey', $error);
+        echo  get_string('error_occured', 'block_onlinesurveyqa', $error);
     }
 } else {
     if ($connectiontype == 'SOAP') {
-        block_onlinesurvey_get_soap_content($config, $moodleusername, $moodleemail, $modalzoom);
+        block_onlinesurveyqa_get_soap_content($config, $moodleusername, $moodleemail, $modalzoom);
     } else if ($connectiontype == 'LTI') {
-        block_onlinesurvey_get_lti_content($config, $context, $course, $modalzoom);
+        block_onlinesurveyqa_get_lti_content($config, $context, $course, $modalzoom);
     }
 }
 echo '</body>';

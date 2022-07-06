@@ -17,12 +17,12 @@
 /**
  * Plugin "Evaluations (evasys)"
  *
- * @package    block_onlinesurvey
+ * @package    block_onlinesurveyqa
  * @copyright  2018 Alexander Bias on behalf of evasys GmbH
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
-namespace block_onlinesurvey\privacy;
+namespace block_onlinesurveyqa\privacy;
 
 use core_privacy\local\metadata\collection;
 use core_privacy\local\request\approved_contextlist;
@@ -34,9 +34,9 @@ use core_privacy\local\request\approved_userlist;
 defined('MOODLE_INTERNAL') || die();
 
 /**
- * Privacy Subsystem for block_onlinesurvey implementing metadata and plugin provider.
+ * Privacy Subsystem for block_onlinesurveyqa implementing metadata and plugin provider.
  *
- * @package    block_onlinesurvey
+ * @package    block_onlinesurveyqa
  * @copyright  2018 Alexander Bias on behalf of evasys GmbH
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -53,7 +53,7 @@ class provider implements
      */
     public static function get_metadata(collection $collection) : collection {
         // Get plugin config.
-        $config = get_config('block_onlinesurvey');
+        $config = get_config('block_onlinesurveyqa');
 
         // If the plugin is using SOAP as connection to evasys.
         if ($config->connectiontype == 'SOAP') {
@@ -81,9 +81,9 @@ class provider implements
         $collection->add_external_location_link(
             $url,
             [
-                $useridentifier => 'privacy:metadata:block_onlinesurvey:'.$useridentifier
+                $useridentifier => 'privacy:metadata:block_onlinesurveyqa:'.$useridentifier
             ],
-            'privacy:metadata:block_onlinesurvey'
+            'privacy:metadata:block_onlinesurveyqa'
         );
 
         return $collection;

@@ -1,14 +1,14 @@
 define(['core/templates', 'core/str'], function(templates) {
 
     var modalTitle = '';
-    var modalZoomSelector = '#block_onlinesurvey_surveys_content';
+    var modalZoomSelector = '#block_onlinesurveyqa_surveys_content';
 
     var popupinfotitle = '';
     var popupinfocontent = '';
     var userlogintime = 0;
 
     var doRefresh = function() {
-        var myElement = document.getElementById("block_onlinesurvey_contentframe");
+        var myElement = document.getElementById("block_onlinesurveyqa_contentframe");
         if (myElement) {
             var oldsrc = myElement.src;
             myElement.src = '';
@@ -26,8 +26,8 @@ define(['core/templates', 'core/str'], function(templates) {
         var templatePromise = null;
 
         if (originalIframe !== null) {
-            // Open from Moodle page, i.e., onlinesurvey iframe exists.
-            templatePromise = templates.render('block_onlinesurvey/modal-iframe', {
+            // Open from Moodle page, i.e., onlinesurveyqa iframe exists.
+            templatePromise = templates.render('block_onlinesurveyqa/modal-iframe', {
                 // Copy iframe target URL from block, but inform that now in modalZoom window.
                 src: originalIframe.src + "&modalZoom=1",
                 title: modalTitle
@@ -35,7 +35,7 @@ define(['core/templates', 'core/str'], function(templates) {
         } else {
             // Open from iframe, i.e., needs to switch to parent Moodle page.
             originalIframe = parent.document.querySelector('iframe');
-            templatePromise = templates.render('block_onlinesurvey/modal-iframe', {
+            templatePromise = templates.render('block_onlinesurveyqa/modal-iframe', {
                 // Copy iframe target URL from block, but inform that now in modalZoom window.
                 src: originalIframe.src + "&modalZoom=1",
                 title: modalTitle
@@ -50,11 +50,11 @@ define(['core/templates', 'core/str'], function(templates) {
             var modalContainer = div.firstChild;
 
             document.body.insertBefore(modalContainer, document.body.firstChild);
-            document.body.className += ' block_onlinesurvey_custom-modal-open';
+            document.body.className += ' block_onlinesurveyqa_custom-modal-open';
 
             var closeCallback = function() {
 
-                document.body.className = document.body.className.replace(' block_onlinesurvey_custom-modal-open', '');
+                document.body.className = document.body.className.replace(' block_onlinesurveyqa_custom-modal-open', '');
 
                 doRefresh();
 
@@ -67,7 +67,7 @@ define(['core/templates', 'core/str'], function(templates) {
                 }, 250);
             };
 
-            modalContainer.querySelector('.block_onlinesurvey_custom-modal_close-button')
+            modalContainer.querySelector('.block_onlinesurveyqa_custom-modal_close-button')
                 .addEventListener('click', function(e) {
                     e.preventDefault();
                     return closeCallback(e);
@@ -105,14 +105,14 @@ define(['core/templates', 'core/str'], function(templates) {
         generatepopupinfo: function() {
 
             // Get saved data from sessionStorage.
-            var popupinfo = sessionStorage.getItem('onlinesurvey_popupinfo');
+            var popupinfo = sessionStorage.getItem('onlinesurveyqa_popupinfo');
 
             if (popupinfo == false || popupinfo === null || popupinfo != userlogintime) {
 
                 // Save data to sessionStorage.
-                sessionStorage.setItem('onlinesurvey_popupinfo', userlogintime);
+                sessionStorage.setItem('onlinesurveyqa_popupinfo', userlogintime);
 
-                var templatePromise = templates.render('block_onlinesurvey/popupinfo', {
+                var templatePromise = templates.render('block_onlinesurveyqa/popupinfo', {
                     title: popupinfotitle,
                     content: popupinfocontent
                 });
@@ -125,11 +125,11 @@ define(['core/templates', 'core/str'], function(templates) {
                     var modalContainer = div.firstChild;
 
                     document.body.insertBefore(modalContainer, document.body.firstChild);
-                    document.body.className += ' block_onlinesurvey_custom-modal-open popupinfo';
+                    document.body.className += ' block_onlinesurveyqa_custom-modal-open popupinfo';
 
                     var closeCallback = function() {
 
-                        document.body.className = document.body.className.replace(' block_onlinesurvey_custom-modal-open', '');
+                        document.body.className = document.body.className.replace(' block_onlinesurveyqa_custom-modal-open', '');
 
                         modalContainer.className += ' fading';
 
@@ -140,7 +140,7 @@ define(['core/templates', 'core/str'], function(templates) {
                         }, 250);
                     };
 
-                    modalContainer.querySelector('.block_onlinesurvey_custom-modal_close-button')
+                    modalContainer.querySelector('.block_onlinesurveyqa_custom-modal_close-button')
                     .addEventListener('click', function(e) {
                         e.preventDefault();
                         return closeCallback(e);

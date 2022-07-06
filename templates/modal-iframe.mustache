@@ -15,7 +15,7 @@
     along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 }}
 {{!
-    @template block_onlinesurvey/modal-iframe
+    @template block_onlinesurveyqa/modal-iframe
 
     Template for modal popup showing an iFrame.
 
@@ -24,19 +24,19 @@
 
     Example context (json):
     {
-        "src": "/blocks/onlinesurvey/show_surveys.php",
+        "src": "/blocks/onlinesurveyqa/show_surveys.php",
         "title": "Modal popup"
     }
 }}
 
-<div class="block_onlinesurvey_custom-modal_container">
-    <div class="block_onlinesurvey_custom-modal block_onlinesurvey_custom-modal--iframe">
-        <div class="block_onlinesurvey_custom-modal_close-button"></div>
+<div class="block_onlinesurveyqa_custom-modal_container">
+    <div class="block_onlinesurveyqa_custom-modal block_onlinesurveyqa_custom-modal--iframe">
+        <div class="block_onlinesurveyqa_custom-modal_close-button"></div>
         {{#title}}
-        <div class="block_onlinesurvey_custom-modal_title">{{title}}</div>
+        <div class="block_onlinesurveyqa_custom-modal_title">{{title}}</div>
         {{/title}}
-        <div class="block_onlinesurvey_custom-modal_content">
-            <iframe name="block_onlinesurvey_custom-modal_contentframe" src="{{{src}}}"></iframe>
+        <div class="block_onlinesurveyqa_custom-modal_content">
+            <iframe name="block_onlinesurveyqa_custom-modal_contentframe" src="{{{src}}}"></iframe>
         </div>
     </div>
 </div>

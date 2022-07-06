@@ -17,7 +17,7 @@
 /**
  * Plugin "Evaluations (evasys)"
  *
- * @package    block_onlinesurvey
+ * @package    block_onlinesurveyqa
  * @copyright  2018 Soon Systems GmbH on behalf of evasys GmbH
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -25,7 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->version = 2021112501;
-$plugin->component = 'block_onlinesurvey';
+$plugin->component = 'block_onlinesurveyqa';
 $plugin->release = 'v3.9-r2';
 $plugin->requires = 2020061500;
 $plugin->supported = [39, 39];

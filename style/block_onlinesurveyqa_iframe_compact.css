@@ -11,20 +11,20 @@ body {
 }
 
 /* Make the compact area as big as possible. */
-.block_onlinesurvey_area {
+.block_onlinesurveyqa_area {
     margin-left: auto;
     margin-right: auto;
     width: 100%;
 }
 
 /* Modify the cursor for opening the popup because the popup is opened with JavaScript. */
-.block_onlinesurvey_surveysexist,
-.block_onlinesurvey_offerzoom {
+.block_onlinesurveyqa_surveysexist,
+.block_onlinesurveyqa_offerzoom {
     cursor: pointer;
 }
 
 /* The circle. */
-.block_onlinesurvey_circle {
+.block_onlinesurveyqa_circle {
     background-color: #267ca7;
     background-size: 110px 110px;
     border: 3px solid #267ca7;
@@ -39,20 +39,20 @@ body {
     width: 90px;
 }
 /* Overwrite circle color if surveys exist. */
-.block_onlinesurvey_area.block_onlinesurvey_surveysexist .block_onlinesurvey_circle {
+.block_onlinesurveyqa_area.block_onlinesurveyqa_surveysexist .block_onlinesurveyqa_circle {
     background-color: #267ca7;
     border: 3px solid #267ca7;
     color: white;
 }
 /* Overwrite circle color if no surveys exist. */
-.block_onlinesurvey_area:not(.block_onlinesurvey_surveysexist) .block_onlinesurvey_circle {
+.block_onlinesurveyqa_area:not(.block_onlinesurveyqa_surveysexist) .block_onlinesurveyqa_circle {
     background-color: #706f6b;
     border: 3px solid #706f6b;
     color: white;
 }
 
 /* The number in the circle. */
-.block_onlinesurvey_number {
+.block_onlinesurveyqa_number {
     font-size: 40px;
     font-weight: bold;
     left: 50%;
@@ -63,7 +63,7 @@ body {
 }
 
 /* The text below the circle. */
-.block_onlinesurvey_text {
+.block_onlinesurveyqa_text {
     font-size: .9375rem;
     padding-top: 10px;
     position: absolute;
@@ -72,7 +72,7 @@ body {
 }
 
 /* The magnifier glass near the circle. */
-.block_onlinesurvey_compact_magnifier {
+.block_onlinesurveyqa_compact_magnifier {
     bottom: 0;
     color: #373a3c;
     display: block;

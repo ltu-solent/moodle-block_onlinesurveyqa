@@ -17,7 +17,7 @@
 /**
  * Plugin "Evaluations (evasys)"
  *
- * @package    block_onlinesurvey
+ * @package    block_onlinesurveyqa
  * @copyright  2018 Soon Systems GmbH on behalf of evasys GmbH
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -164,10 +164,10 @@ $string['setting_lti_regex_instructor_desc'] = 'Regular expression which searche
 /* Capabilities.
 /*************************/
 
-$string['onlinesurvey:addinstance'] = 'Add instance of the Evaluations (evasys) block';
-$string['onlinesurvey:myaddinstance'] = 'Add instance of the Evaluations (evasys) block to my page';
-$string['onlinesurvey:view'] = 'View Evaluations (evasys) block';
-$string['onlinesurvey:view_debugdetails'] = 'View debug details';
+$string['onlinesurveyqa:addinstance'] = 'Add instance of the Evaluations (evasys) block';
+$string['onlinesurveyqa:myaddinstance'] = 'Add instance of the Evaluations (evasys) block to my page';
+$string['onlinesurveyqa:view'] = 'View Evaluations (evasys) block';
+$string['onlinesurveyqa:view_debugdetails'] = 'View debug details';
 
 
 /*************************/
@@ -206,9 +206,9 @@ $string['error_wsdl_namespace'] = 'WSDL namespace parse error<br />';
 /* Privacy.
 /*************************/
 
-$string['privacy:metadata:block_onlinesurvey'] = 'The evasys block plugin does not store any personal data, but does transmit user data from Moodle to the connected evasys instance.';
-$string['privacy:metadata:block_onlinesurvey:email'] = 'The user\'s email sent to evasys to check for existing surveys.';
-$string['privacy:metadata:block_onlinesurvey:username'] = 'The user\'s username value sent to evasys to check for existing surveys.';
+$string['privacy:metadata:block_onlinesurveyqa'] = 'The evasys block plugin does not store any personal data, but does transmit user data from Moodle to the connected evasys instance.';
+$string['privacy:metadata:block_onlinesurveyqa:email'] = 'The user\'s email sent to evasys to check for existing surveys.';
+$string['privacy:metadata:block_onlinesurveyqa:username'] = 'The user\'s username value sent to evasys to check for existing surveys.';
 
 
 /*************************/

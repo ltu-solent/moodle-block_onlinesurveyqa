@@ -17,7 +17,7 @@
 /**
  * Plugin "Evaluations (evasys)"
  *
- * @package    block_onlinesurvey
+ * @package    block_onlinesurveyqa
  * @copyright  2018 Soon Systems GmbH on behalf of evasys GmbH
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -26,7 +26,7 @@ defined('MOODLE_INTERNAL') || die();
 
 $capabilities = array(
 
-    'block/onlinesurvey:view' => array(
+    'block/onlinesurveyqa:view' => array(
         'captype'      => 'read',
         'contextlevel' => CONTEXT_BLOCK,
         'archetypes' => array(
@@ -34,7 +34,7 @@ $capabilities = array(
         ),
     ),
 
-    'block/onlinesurvey:addinstance' => array(
+    'block/onlinesurveyqa:addinstance' => array(
         'captype' => 'write',
         'contextlevel' => CONTEXT_BLOCK,
         'archetypes' => array(
@@ -45,7 +45,7 @@ $capabilities = array(
         'clonepermissionsfrom' => 'moodle/site:manageblocks'
     ),
 
-    'block/onlinesurvey:myaddinstance' => array(
+    'block/onlinesurveyqa:myaddinstance' => array(
         'captype' => 'write',
         'contextlevel' => CONTEXT_SYSTEM,
         'archetypes' => array(
@@ -55,7 +55,7 @@ $capabilities = array(
         'clonepermissionsfrom' => 'moodle/my:manageblocks'
     ),
 
-    'block/onlinesurvey:view_debugdetails' => array(
+    'block/onlinesurveyqa:view_debugdetails' => array(
         'captype'      => 'read',
         'contextlevel' => CONTEXT_BLOCK,
         'archetypes' => array(
