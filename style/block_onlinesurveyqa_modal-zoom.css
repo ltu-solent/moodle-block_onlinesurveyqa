@@ -80,22 +80,22 @@ body.block_onlinesurveyqa_custom-modal-open {
 }
 
 .block_onlinesurveyqa_custom-modal {
-    animation: .25s BlockonlinesurveyqaCustomModalFadeInSlideFromBottom forwards;
+    animation: .25s BlockOnlinesurveyCustomModalFadeInSlideFromBottom forwards;
 }
 
 .block_onlinesurveyqa_custom-modal_container.fading .modal {
-    animation: .25s BlockonlinesurveyqaCustomModalFadeOutSlideFromTop forwards;
+    animation: .25s BlockOnlinesurveyCustomModalFadeOutSlideFromTop forwards;
 }
 
 .block_onlinesurveyqa_custom-modal_container {
-    animation: .25s BlockonlinesurveyqaCustomModalSimpleFadeIn forwards;
+    animation: .25s BlockOnlinesurveyCustomModalSimpleFadeIn forwards;
 }
 
 .block_onlinesurveyqa_custom-modal_container.fading {
-    animation: .25s BlockonlinesurveyqaCustomModalSimpleFadeOut forwards;
+    animation: .25s BlockOnlinesurveyCustomModalSimpleFadeOut forwards;
 }
 
-@keyframes BlockonlinesurveyqaCustomModalFadeInSlideFromBottom {
+@keyframes BlockOnlinesurveyCustomModalFadeInSlideFromBottom {
     from {
         opacity: 0;
         transform: translateY(50px);
@@ -106,7 +106,7 @@ body.block_onlinesurveyqa_custom-modal-open {
     }
 }
 
-@keyframes BlockonlinesurveyqaCustomModalFadeOutSlideFromTop {
+@keyframes BlockOnlinesurveyCustomModalFadeOutSlideFromTop {
     from {
         opacity: 1;
         transform: translateY(0);
@@ -117,7 +117,7 @@ body.block_onlinesurveyqa_custom-modal-open {
     }
 }
 
-@keyframes BlockonlinesurveyqaCustomModalSimpleFadeIn {
+@keyframes BlockOnlinesurveyCustomModalSimpleFadeIn {
     from {
         opacity: 0;
     }
@@ -126,7 +126,7 @@ body.block_onlinesurveyqa_custom-modal-open {
     }
 }
 
-@keyframes BlockonlinesurveyqaCustomModalSimpleFadeOut {
+@keyframes BlockOnlinesurveyCustomModalSimpleFadeOut {
     from {
         opacity: 1;
     }

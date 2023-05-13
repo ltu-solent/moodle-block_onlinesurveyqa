@@ -17,7 +17,7 @@
 /**
  * Plugin "Evaluations (evasys)"
  *
- * @package    block_onlinesurvey
+ * @package    block_onlinesurveyqa
  * @copyright  2018 Soon Systems GmbH on behalf of evasys GmbH
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -31,11 +31,11 @@ require_once($CFG->libdir.'/filelib.php');
 /**
  * Onlinesurvey SOAP client which extends the standard SoapClient class.
  *
- * @package    block_onlinesurvey
+ * @package    block_onlinesurveyqa
  * @copyright  2018 Soon Systems GmbH on behalf of evasys GmbH
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class onlinesurvey_soap_client extends SoapClient {
+class onlinesurveyqa_soap_client extends SoapClient {
     /**
      * @var int
      */
@@ -75,10 +75,10 @@ class onlinesurvey_soap_client extends SoapClient {
         $ret = $curl->get($wsdl, '', $curloptions);
 
         if ($errornumber = $curl->get_errno()) {
-            $msgoutput = get_string('error_survey_curl_timeout_msg', 'block_onlinesurvey');
+            $msgoutput = get_string('error_survey_curl_timeout_msg', 'block_onlinesurveyqa');
 
             $context = context_system::instance();
-            if (has_capability('block/onlinesurvey:view_debugdetails', $context)) {
+            if (has_capability('block/onlinesurveyqa:view_debugdetails', $context)) {
                 if (!empty($msgoutput)) {
                     $msgoutput .= "<br><br>"."curl_errno $errornumber: $ret"; // Variable $ret now contains the error string.
                 }
@@ -142,10 +142,10 @@ class onlinesurvey_soap_client extends SoapClient {
         $ret = $curl->post($location, $request, $curloptions);
 
         if ($errornumber = $curl->get_errno()) {
-            $msgoutput = get_string('error_survey_curl_timeout_msg', 'block_onlinesurvey');
+            $msgoutput = get_string('error_survey_curl_timeout_msg', 'block_onlinesurveyqa');
 
             $context = context_system::instance();
-            if (has_capability('block/onlinesurvey:view_debugdetails', $context)) {
+            if (has_capability('block/onlinesurveyqa:view_debugdetails', $context)) {
                 if (!empty($msgoutput)) {
                     $msgoutput .= "<br><br>"."curl_errno $errornumber: $ret"; // Variable $ret now contains the error string.
                 }

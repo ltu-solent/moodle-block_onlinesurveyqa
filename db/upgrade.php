@@ -17,7 +17,7 @@
 /**
  * Plugin "Evaluations (evasys)"
  *
- * @package    block_onlinesurvey
+ * @package    block_onlinesurveyqa
  * @copyright  2020 Alexander Bias on behalf of evasys GmbH
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -29,48 +29,48 @@ defined('MOODLE_INTERNAL') || die();
  * @param int $oldversion the version we are upgrading from
  * @return boolean
  */
-function xmldb_block_onlinesurvey_upgrade($oldversion) {
+function xmldb_block_onlinesurveyqa_upgrade($oldversion) {
 
-    // From now on, the setting "block_onlinesurvey|setting_survey_server" uses SOAP API Version 61 instead of Version 51.
+    // From now on, the setting "block_onlinesurveyqa|setting_survey_server" uses SOAP API Version 61 instead of Version 51.
     if ($oldversion < 2020010903) {
         // Check if the setting is set in this Moodle instance.
-        $oldsetting = get_config('block_onlinesurvey', 'survey_server');
+        $oldsetting = get_config('block_onlinesurveyqa', 'survey_server');
         if (!empty($oldsetting) && strpos($oldsetting, 'soapserver-v51.wsdl') !== false) {
 
             // Replace the version in the setting.
             $newsetting = str_replace('soapserver-v51.wsdl', 'soapserver-v61.wsdl', $oldsetting);
 
             // Write the setting back to the DB.
-            set_config('survey_server', $newsetting, 'block_onlinesurvey');
+            set_config('survey_server', $newsetting, 'block_onlinesurveyqa');
 
             // Show an info message that the SOAP API version has been changed automatically.
-            $message = get_string('upgrade_notice_2020010900', 'block_onlinesurvey',
+            $message = get_string('upgrade_notice_2020010900', 'block_onlinesurveyqa',
                     array ('old' => $oldsetting, 'new' => $newsetting));
             echo html_writer::tag('div', $message, array('class' => 'alert alert-info'));
         }
 
         // Remember upgrade savepoint.
-        upgrade_plugin_savepoint(true, 2020010903, 'block', 'onlinesurvey');
+        upgrade_plugin_savepoint(true, 2020010903, 'block', 'onlinesurveyqa');
     }
 
     // The setting 'additionalclass' was removed.
     if ($oldversion < 2020052200) {
         // Check if the setting is set in this Moodle instance.
-        $oldsetting = get_config('block_onlinesurvey', 'additionalclass');
+        $oldsetting = get_config('block_onlinesurveyqa', 'additionalclass');
         if (!empty($oldsetting)) {
 
             // Remove the setting in the DB.
-            unset_config('additionalclass', 'block_onlinesurvey');
+            unset_config('additionalclass', 'block_onlinesurveyqa');
         }
 
         // Remember upgrade savepoint.
-        upgrade_plugin_savepoint(true, 2020052200, 'block', 'onlinesurvey');
+        upgrade_plugin_savepoint(true, 2020052200, 'block', 'onlinesurveyqa');
     }
 
     // Re-branding of the evasys brand.
     if ($oldversion < 2020060404) {
         // Check if the blocktitle is set in this Moodle instance.
-        $blocktitlesetting = get_config('block_onlinesurvey', 'blocktitle');
+        $blocktitlesetting = get_config('block_onlinesurveyqa', 'blocktitle');
         if (!empty($blocktitlesetting)) {
 
             // If the blocktitle contains the substring 'EvaSys' (case-sensitive).
@@ -79,12 +79,12 @@ function xmldb_block_onlinesurvey_upgrade($oldversion) {
                 $newblocktitle = str_replace('EvaSys', 'evasys', $blocktitlesetting);
 
                 // Write the setting back to the DB.
-                set_config('blocktitle', $newblocktitle, 'block_onlinesurvey');
+                set_config('blocktitle', $newblocktitle, 'block_onlinesurveyqa');
             }
         }
 
         // Remember upgrade savepoint.
-        upgrade_plugin_savepoint(true, 2020060404, 'block', 'onlinesurvey');
+        upgrade_plugin_savepoint(true, 2020060404, 'block', 'onlinesurveyqa');
     }
 
     return true;

@@ -18,10 +18,10 @@
 <<<<<<< HEAD
  * Plugin "Evaluations (evasys)" - Local library
  *
- * @package    block_onlinesurvey
+ * @package    block_onlinesurveyqa
  * @copyright  2018 Soon Systems GmbH on behalf of evasys GmbH
 =======
- * Plugin "Evaluations (EvaSys)" - Local library
+ * Plugin "Evaluations (EvaSys) QAHE" - Local library
  *
  * @package    block_onlinesurveyqa
  * @copyright  2018 Soon Systems GmbH on behalf of Electric Paper Evaluationssysteme GmbH
@@ -32,20 +32,20 @@
 defined('MOODLE_INTERNAL') || die();
 
 <<<<<<< HEAD
-define('BLOCK_ONLINESURVEY_COMM_SOAP', "SOAP");
-define('BLOCK_ONLINESURVEY_COMM_LTI', "LTI");
-define('BLOCK_ONLINESURVEY_DEFAULT_TIMEOUT', 15);
+define('BLOCK_ONLINESURVEYQA_COMM_SOAP', "SOAP");
+define('BLOCK_ONLINESURVEYQA_COMM_LTI', "LTI");
+define('BLOCK_ONLINESURVEYQA_DEFAULT_TIMEOUT', 15);
 
-define('BLOCK_ONLINESURVEY_LTI_REGEX_LEARNER_DEFAULT', '/<(p){1}(.){0,}[\s]{0,}(data-participated="false"){1}[\s]{0,}/');
-define('BLOCK_ONLINESURVEY_LTI_REGEX_INSTRUCTOR_DEFAULT',
+define('BLOCK_ONLINESURVEYQA_LTI_REGEX_LEARNER_DEFAULT', '/<(p){1}(.){0,}[\s]{0,}(data-participated="false"){1}[\s]{0,}/');
+define('BLOCK_ONLINESURVEYQA_LTI_REGEX_INSTRUCTOR_DEFAULT',
         '/<(div){1}[\s]{1,}(class=){1}["|\']{1}[a-z]{0,}[\s]{0,}(response-box){1}[\s]{0,}[a-z]{0,}[\s]{0,}["|\']{1}>/');
 
-define('BLOCK_ONLINESURVEY_PRESENTATION_BRIEF', "brief");
-define('BLOCK_ONLINESURVEY_PRESENTATION_DETAILED', "detailed");
+define('BLOCK_ONLINESURVEYQA_PRESENTATION_BRIEF', "brief");
+define('BLOCK_ONLINESURVEYQA_PRESENTATION_DETAILED', "detailed");
 
 /**
  * Request surveys for the current user according to email or username and displays the result.
- * @param string $config block settings of "block_onlinesurvey"
+ * @param string $config block settings of "block_onlinesurveyqa"
 =======
 define('BLOCK_onlinesurveyqa_COMM_SOAP', "SOAP");
 define('BLOCK_onlinesurveyqa_COMM_LTI', "LTI");
@@ -68,7 +68,7 @@ define('BLOCK_onlinesurveyqa_PRESENTATION_DETAILED', "detailed");
  * @return string
  */
 <<<<<<< HEAD
-function block_onlinesurvey_get_soap_content($config = null, $moodleusername = '', $moodleemail = '', $modalzoom = 0) {
+function block_onlinesurveyqa_get_soap_content($config = null, $moodleusername = '', $moodleemail = '', $modalzoom = 0) {
 =======
 function block_onlinesurveyqa_get_soap_content($config = null, $moodleusername = '', $moodleemail = '', $modalzoom = 0) {
 >>>>>>> Initial commit
@@ -78,7 +78,7 @@ function block_onlinesurveyqa_get_soap_content($config = null, $moodleusername =
 
     if (empty($config)) {
 <<<<<<< HEAD
-        $config = get_config("block_onlinesurvey");
+        $config = get_config("block_onlinesurveyqa");
 =======
         $config = get_config("block_onlinesurveyqa");
 >>>>>>> Initial commit
@@ -95,7 +95,7 @@ function block_onlinesurveyqa_get_soap_content($config = null, $moodleusername =
     $offerzoom = $config->offer_zoom;
 
 <<<<<<< HEAD
-    $timeout = isset($config->survey_timeout) ? $config->survey_timeout : BLOCK_ONLINESURVEY_DEFAULT_TIMEOUT;
+    $timeout = isset($config->survey_timeout) ? $config->survey_timeout : BLOCK_ONLINESURVEYQA_DEFAULT_TIMEOUT;
 =======
     $timeout = isset($config->survey_timeout) ? $config->survey_timeout : BLOCK_onlinesurveyqa_DEFAULT_TIMEOUT;
 >>>>>>> Initial commit
@@ -128,25 +128,25 @@ function block_onlinesurveyqa_get_soap_content($config = null, $moodleusername =
 
         // Get surveys if no surveys in SESSION or debug mode for the block is enabled.
 <<<<<<< HEAD
-        if (!isset($SESSION->block_onlinesurvey_surveykeys) || $debugmode || $soaprequesteachtime) {
-            $result = block_onlinesurvey_get_surveys($soapconfigobj);
-            $SESSION->block_onlinesurvey_surveykeys = $result->surveys;
+        if (!isset($SESSION->block_onlinesurveyqa_surveykeys) || $debugmode || $soaprequesteachtime) {
+            $result = block_onlinesurveyqa_get_surveys($soapconfigobj);
+            $SESSION->block_onlinesurveyqa_surveykeys = $result->surveys;
 
-            $SESSION->block_onlinesurvey_error = $result->error;
+            $SESSION->block_onlinesurveyqa_error = $result->error;
         }
 
-        if (isset($SESSION->block_onlinesurvey_error)) {
-            $result->error = $SESSION->block_onlinesurvey_error;
+        if (isset($SESSION->block_onlinesurveyqa_error)) {
+            $result->error = $SESSION->block_onlinesurveyqa_error;
         }
 
-        if (is_object($SESSION->block_onlinesurvey_surveykeys)) {
-            if (!is_array($SESSION->block_onlinesurvey_surveykeys->OnlineSurveyKeys)) {
-                $SESSION->block_onlinesurvey_surveykeys->OnlineSurveyKeys = array(
-                                $SESSION->block_onlinesurvey_surveykeys->OnlineSurveyKeys
+        if (is_object($SESSION->block_onlinesurveyqa_surveykeys)) {
+            if (!is_array($SESSION->block_onlinesurveyqa_surveykeys->OnlineSurveyKeys)) {
+                $SESSION->block_onlinesurveyqa_surveykeys->OnlineSurveyKeys = array(
+                                $SESSION->block_onlinesurveyqa_surveykeys->OnlineSurveyKeys
                 );
             }
 
-            $count = count($SESSION->block_onlinesurvey_surveykeys->OnlineSurveyKeys);
+            $count = count($SESSION->block_onlinesurveyqa_surveykeys->OnlineSurveyKeys);
 =======
         if (!isset($SESSION->block_onlinesurveyqa_surveykeys) || $debugmode || $soaprequesteachtime) {
             $result = block_onlinesurveyqa_get_surveys($soapconfigobj);
@@ -173,7 +173,7 @@ function block_onlinesurveyqa_get_soap_content($config = null, $moodleusername =
 
             $surveysfound = false;
 <<<<<<< HEAD
-            foreach ($SESSION->block_onlinesurvey_surveykeys->OnlineSurveyKeys as $surveykey) {
+            foreach ($SESSION->block_onlinesurveyqa_surveykeys->OnlineSurveyKeys as $surveykey) {
 =======
             foreach ($SESSION->block_onlinesurveyqa_surveykeys->onlinesurveyqaKeys as $surveykey) {
 >>>>>>> Initial commit
@@ -187,22 +187,22 @@ function block_onlinesurveyqa_get_soap_content($config = null, $moodleusername =
 
             if ($hideempty && $count2 > 0) {
 <<<<<<< HEAD
-                $soapcontentstr .= block_onlinesurvey_viewscript();
+                $soapcontentstr .= block_onlinesurveyqa_viewscript();
             }
 
             if (!$offerzoom && $count2 > 0 && !$modalzoom) {
-                $soapcontentstr .= block_onlinesurvey_surveybuttonscript();
+                $soapcontentstr .= block_onlinesurveyqa_surveybuttonscript();
             }
 
             if ($count2 > 0 && !$modalzoom) {
-                $soapcontentstr .= block_onlinesurvey_highlightscript($count2);
+                $soapcontentstr .= block_onlinesurveyqa_highlightscript($count2);
             } else if ($count2 == 0 && !$modalzoom) {
-                $soapcontentstr .= block_onlinesurvey_donthighlightscript();
+                $soapcontentstr .= block_onlinesurveyqa_donthighlightscript();
             }
 
-            if ($config->presentation == BLOCK_ONLINESURVEY_PRESENTATION_BRIEF && !$modalzoom) {
+            if ($config->presentation == BLOCK_ONLINESURVEYQA_PRESENTATION_BRIEF && !$modalzoom) {
 
-                $soapcontentstr .= block_onlinesurvey_createsummary($count2);
+                $soapcontentstr .= block_onlinesurveyqa_createsummary($count2);
 =======
                 $soapcontentstr .= block_onlinesurveyqa_viewscript();
             }
@@ -236,10 +236,10 @@ function block_onlinesurveyqa_get_soap_content($config = null, $moodleusername =
                 // Surveys found.
                 if ($count && $surveysfound) {
 <<<<<<< HEAD
-                    $soapcontentstr .= '<ul class="block_onlinesurvey_survey_list">';
+                    $soapcontentstr .= '<ul class="block_onlinesurveyqa_survey_list">';
 
                     $cnt = 0;
-                    foreach ($SESSION->block_onlinesurvey_surveykeys->OnlineSurveyKeys as $surveykey) {
+                    foreach ($SESSION->block_onlinesurveyqa_surveykeys->OnlineSurveyKeys as $surveykey) {
 =======
                     $soapcontentstr .= '<ul class="block_onlinesurveyqa_survey_list">';
 
@@ -266,12 +266,12 @@ function block_onlinesurveyqa_get_soap_content($config = null, $moodleusername =
                     }
                 } else {
 <<<<<<< HEAD
-                    $soapcontentstr = '<div class="block_onlinesurvey_info">'.
-                            get_string('surveys_exist_not', 'block_onlinesurvey').'</div>';
+                    $soapcontentstr = '<div class="block_onlinesurveyqa_info">'.
+                            get_string('surveys_exist_not', 'block_onlinesurveyqa').'</div>';
                 }
             }
-        } else if (empty($SESSION->block_onlinesurvey_surveykeys)) {
-            $soapcontentstr = '<div class="block_onlinesurvey_info">'.get_string('surveys_exist_not', 'block_onlinesurvey').
+        } else if (empty($SESSION->block_onlinesurveyqa_surveykeys)) {
+            $soapcontentstr = '<div class="block_onlinesurveyqa_info">'.get_string('surveys_exist_not', 'block_onlinesurveyqa').
 =======
                     $soapcontentstr = '<div class="block_onlinesurveyqa_info">'.
                             get_string('surveys_exist_not', 'block_onlinesurveyqa').'</div>';
@@ -285,7 +285,7 @@ function block_onlinesurveyqa_get_soap_content($config = null, $moodleusername =
 
         if (isset($result->error) && !empty($result->error)) {
 <<<<<<< HEAD
-            $soapcontentstr = get_string('error_occured', 'block_onlinesurvey', $result->error);
+            $soapcontentstr = get_string('error_occured', 'block_onlinesurveyqa', $result->error);
 =======
             $soapcontentstr = get_string('error_occured', 'block_onlinesurveyqa', $result->error);
 >>>>>>> Initial commit
@@ -294,11 +294,11 @@ function block_onlinesurveyqa_get_soap_content($config = null, $moodleusername =
         // TODO: Check, was hier angezeigt werden soll.
         if ($debugmode && isset($result->warning) && !empty($result->warning)) {
 <<<<<<< HEAD
-            $soapcontentstr = get_string('error_warning_message', 'block_onlinesurvey', $result->warning) ."<br>" . $soapcontentstr;
+            $soapcontentstr = get_string('error_warning_message', 'block_onlinesurveyqa', $result->warning) ."<br>" . $soapcontentstr;
         }
     } else {
         if ($debugmode) {
-            $soapcontentstr = get_string('error_wsdl_namespace', 'block_onlinesurvey');
+            $soapcontentstr = get_string('error_wsdl_namespace', 'block_onlinesurveyqa');
 =======
             $soapcontentstr = get_string('error_warning_message', 'block_onlinesurveyqa', $result->warning) ."<br>" . $soapcontentstr;
         }
@@ -319,13 +319,13 @@ function block_onlinesurveyqa_get_soap_content($config = null, $moodleusername =
  * @return string
  */
 <<<<<<< HEAD
-function block_onlinesurvey_createsummary($surveycount) {
-    $offerzoom = get_config('block_onlinesurvey', 'offer_zoom');
+function block_onlinesurveyqa_createsummary($surveycount) {
+    $offerzoom = get_config('block_onlinesurveyqa', 'offer_zoom');
     if ($surveycount == 0 && $offerzoom == false) {
-        $contentstr = "<div id=\"block_onlinesurvey_area\" class=\"block_onlinesurvey_area\">";
+        $contentstr = "<div id=\"block_onlinesurveyqa_area\" class=\"block_onlinesurveyqa_area\">";
 
-        $contentstr .= "<div class=\"block_onlinesurvey_circle\" >";
-        $contentstr .= "<span class=\"block_onlinesurvey_number\">";
+        $contentstr .= "<div class=\"block_onlinesurveyqa_circle\" >";
+        $contentstr .= "<span class=\"block_onlinesurveyqa_number\">";
 =======
 function block_onlinesurveyqa_createsummary($surveycount) {
     $offerzoom = get_config('block_onlinesurveyqa', 'offer_zoom');
@@ -340,18 +340,18 @@ function block_onlinesurveyqa_createsummary($surveycount) {
         $contentstr .= "</div>";
 
 <<<<<<< HEAD
-        $contentstr .= '<div class="block_onlinesurvey_text">' . get_string('surveys_exist_not', 'block_onlinesurvey') . '</div>';
+        $contentstr .= '<div class="block_onlinesurveyqa_text">' . get_string('surveys_exist_not', 'block_onlinesurveyqa') . '</div>';
 
         $contentstr .= "</div>";
     } else if ($surveycount == 0 && $offerzoom == true) {
-        $contentstr = "<div id=\"block_onlinesurvey_area\" class=\"block_onlinesurvey_area block_onlinesurvey_offerzoom\" ".
-            "onClick=\"parent.document.getElementById('block_onlinesurvey_surveys_content').click(parent.document);\">";
+        $contentstr = "<div id=\"block_onlinesurveyqa_area\" class=\"block_onlinesurveyqa_area block_onlinesurveyqa_offerzoom\" ".
+            "onClick=\"parent.document.getElementById('block_onlinesurveyqa_surveys_content').click(parent.document);\">";
 
-        $contentstr .= "<div class=\"block_onlinesurvey_circle\" >";
-        $contentstr .= "<span class=\"block_onlinesurvey_number\">";
+        $contentstr .= "<div class=\"block_onlinesurveyqa_circle\" >";
+        $contentstr .= "<span class=\"block_onlinesurveyqa_number\">";
         $contentstr .= "<i class=\"fa fa-check\"></i>";
         $contentstr .= "</span>";
-        $contentstr .= "<div class=\"block_onlinesurvey_compact_magnifier\">";
+        $contentstr .= "<div class=\"block_onlinesurveyqa_compact_magnifier\">";
 =======
         $contentstr .= '<div class="block_onlinesurveyqa_text">' . get_string('surveys_exist_not', 'block_onlinesurveyqa') . '</div>';
 
@@ -371,7 +371,7 @@ function block_onlinesurveyqa_createsummary($surveycount) {
         $contentstr .= "</div>";
 
 <<<<<<< HEAD
-        $contentstr .= '<div class="block_onlinesurvey_text">' . get_string('surveys_exist_not', 'block_onlinesurvey') . '</div>';
+        $contentstr .= '<div class="block_onlinesurveyqa_text">' . get_string('surveys_exist_not', 'block_onlinesurveyqa') . '</div>';
 =======
         $contentstr .= '<div class="block_onlinesurveyqa_text">' . get_string('surveys_exist_not', 'block_onlinesurveyqa') . '</div>';
 >>>>>>> Initial commit
@@ -380,21 +380,21 @@ function block_onlinesurveyqa_createsummary($surveycount) {
     } else {
         if ($surveycount > 0 && $surveycount <= 3) {
 <<<<<<< HEAD
-            $surveycountclass = 'block_onlinesurvey_surveycount_'.$surveycount;
+            $surveycountclass = 'block_onlinesurveyqa_surveycount_'.$surveycount;
         }
         if ($surveycount > 3) {
-            $surveycountclass = 'block_onlinesurvey_surveycount_gt3';
+            $surveycountclass = 'block_onlinesurveyqa_surveycount_gt3';
         }
 
-        $contentstr = "<div id=\"block_onlinesurvey_area\" ".
-                "class=\"block_onlinesurvey_area block_onlinesurvey_surveysexist ".$surveycountclass."\" ".
-                "onClick=\"parent.document.getElementById('block_onlinesurvey_surveys_content').click(parent.document);\">";
+        $contentstr = "<div id=\"block_onlinesurveyqa_area\" ".
+                "class=\"block_onlinesurveyqa_area block_onlinesurveyqa_surveysexist ".$surveycountclass."\" ".
+                "onClick=\"parent.document.getElementById('block_onlinesurveyqa_surveys_content').click(parent.document);\">";
 
-        $contentstr .= "<div class=\"block_onlinesurvey_circle\" >";
-        $contentstr .= "<span class=\"block_onlinesurvey_number\">";
+        $contentstr .= "<div class=\"block_onlinesurveyqa_circle\" >";
+        $contentstr .= "<span class=\"block_onlinesurveyqa_number\">";
         $contentstr .= $surveycount;
         $contentstr .= "</span>";
-        $contentstr .= "<div class=\"block_onlinesurvey_compact_magnifier\">";
+        $contentstr .= "<div class=\"block_onlinesurveyqa_compact_magnifier\">";
 =======
             $surveycountclass = 'block_onlinesurveyqa_surveycount_'.$surveycount;
         }
@@ -417,7 +417,7 @@ function block_onlinesurveyqa_createsummary($surveycount) {
         $contentstr .= "</div>";
 
 <<<<<<< HEAD
-        $contentstr .= '<div class="block_onlinesurvey_text">' . get_string('surveys_exist', 'block_onlinesurvey') . '</div>';
+        $contentstr .= '<div class="block_onlinesurveyqa_text">' . get_string('surveys_exist', 'block_onlinesurveyqa') . '</div>';
 =======
         $contentstr .= '<div class="block_onlinesurveyqa_text">' . get_string('surveys_exist', 'block_onlinesurveyqa') . '</div>';
 >>>>>>> Initial commit
@@ -434,9 +434,9 @@ function block_onlinesurveyqa_createsummary($surveycount) {
  * @return string
  */
 <<<<<<< HEAD
-function block_onlinesurvey_viewscript() {
+function block_onlinesurveyqa_viewscript() {
     return '<script language="JavaScript">'."\n".
-            '   var hiddenelements = parent.document.getElementsByClassName("block_onlinesurvey");'."\n".
+            '   var hiddenelements = parent.document.getElementsByClassName("block_onlinesurveyqa");'."\n".
 =======
 function block_onlinesurveyqa_viewscript() {
     return '<script language="JavaScript">'."\n".
@@ -454,9 +454,9 @@ function block_onlinesurveyqa_viewscript() {
  * @return string
  */
 <<<<<<< HEAD
-function block_onlinesurvey_surveybuttonscript() {
+function block_onlinesurveyqa_surveybuttonscript() {
     return '<script language="JavaScript">'."\n".
-            '   var hiddenelements = parent.document.getElementsByClassName("block_onlinesurvey_allsurveys");'."\n".
+            '   var hiddenelements = parent.document.getElementsByClassName("block_onlinesurveyqa_allsurveys");'."\n".
 =======
 function block_onlinesurveyqa_surveybuttonscript() {
     return '<script language="JavaScript">'."\n".
@@ -475,18 +475,18 @@ function block_onlinesurveyqa_surveybuttonscript() {
  * @return string
  */
 <<<<<<< HEAD
-function block_onlinesurvey_highlightscript($surveycount) {
+function block_onlinesurveyqa_highlightscript($surveycount) {
     if ($surveycount > 0 && $surveycount <= 3) {
-        $surveycountclass = 'block_onlinesurvey_surveycount_'.$surveycount;
+        $surveycountclass = 'block_onlinesurveyqa_surveycount_'.$surveycount;
     }
     if ($surveycount > 3) {
-        $surveycountclass = 'block_onlinesurvey_surveycount_gt3';
+        $surveycountclass = 'block_onlinesurveyqa_surveycount_gt3';
     }
 
     return '<script language="JavaScript">'."\n".
-            '   var parentelements = parent.document.getElementsByClassName("block_onlinesurvey");'."\n".
+            '   var parentelements = parent.document.getElementsByClassName("block_onlinesurveyqa");'."\n".
             '   for (var i = 0; i < parentelements.length; i++) {'."\n".
-            '       parentelements[i].classList.add("block_onlinesurvey_surveysexist");'."\n".
+            '       parentelements[i].classList.add("block_onlinesurveyqa_surveysexist");'."\n".
 =======
 function block_onlinesurveyqa_highlightscript($surveycount) {
     if ($surveycount > 0 && $surveycount <= 3) {
@@ -512,11 +512,11 @@ function block_onlinesurveyqa_highlightscript($surveycount) {
  * @return string
  */
 <<<<<<< HEAD
-function block_onlinesurvey_donthighlightscript() {
+function block_onlinesurveyqa_donthighlightscript() {
     return '<script language="JavaScript">'."\n".
-            '   var parentelements = parent.document.getElementsByClassName("block_onlinesurvey");'."\n".
+            '   var parentelements = parent.document.getElementsByClassName("block_onlinesurveyqa");'."\n".
             '   for (var i = 0; i < parentelements.length; i++) {'."\n".
-            '       parentelements[i].classList.remove("block_onlinesurvey_surveysexist");'."\n".
+            '       parentelements[i].classList.remove("block_onlinesurveyqa_surveysexist");'."\n".
 =======
 function block_onlinesurveyqa_donthighlightscript() {
     return '<script language="JavaScript">'."\n".
@@ -533,9 +533,9 @@ function block_onlinesurveyqa_donthighlightscript() {
  *
  * @param object $soapconfigobj Object containing data for SOAP request.
 <<<<<<< HEAD
- * @return object Object containing surveys if present and errors or warnings of the onlinesurvey_soap_client
+ * @return object Object containing surveys if present and errors or warnings of the onlinesurveyqa_soap_client
  */
-function block_onlinesurvey_get_surveys($soapconfigobj) {
+function block_onlinesurveyqa_get_surveys($soapconfigobj) {
 =======
  * @return object Object containing surveys if present and errors or warnings of the onlinesurveyqa_soap_client
  */
@@ -549,9 +549,9 @@ function block_onlinesurveyqa_get_surveys($soapconfigobj) {
         // Check connectiontype for SOAP.
         if ($soapconfigobj->connectiontype == 'SOAP') {
 <<<<<<< HEAD
-            require_once('onlinesurvey_soap_client.php');
+            require_once('onlinesurveyqa_soap_client.php');
 
-            $client = new onlinesurvey_soap_client( $soapconfigobj->wsdl,
+            $client = new onlinesurveyqa_soap_client( $soapconfigobj->wsdl,
 =======
             require_once('onlinesurveyqa_soap_client.php');
 
@@ -579,7 +579,7 @@ function block_onlinesurveyqa_get_surveys($soapconfigobj) {
                 $client->__setSoapHeaders($soapheader);
             } else {
 <<<<<<< HEAD
-                $retval->error = block_onlinesurvey_handle_error("SOAP client configuration error");
+                $retval->error = block_onlinesurveyqa_handle_error("SOAP client configuration error");
 =======
                 $retval->error = block_onlinesurveyqa_handle_error("SOAP client configuration error");
 >>>>>>> Initial commit
@@ -599,7 +599,7 @@ function block_onlinesurveyqa_get_surveys($soapconfigobj) {
         }
     } catch (Exception $e) {
 <<<<<<< HEAD
-        $retval->error = block_onlinesurvey_handle_error($e);
+        $retval->error = block_onlinesurveyqa_handle_error($e);
 =======
         $retval->error = block_onlinesurveyqa_handle_error($e);
 >>>>>>> Initial commit
@@ -614,7 +614,7 @@ function block_onlinesurveyqa_get_surveys($soapconfigobj) {
  * @return string human readable representation of an error
  */
 <<<<<<< HEAD
-function block_onlinesurvey_handle_error($err) {
+function block_onlinesurveyqa_handle_error($err) {
 =======
 function block_onlinesurveyqa_handle_error($err) {
 >>>>>>> Initial commit
@@ -630,7 +630,7 @@ function block_onlinesurveyqa_handle_error($err) {
     } else {
         // Error should be an exception.
 <<<<<<< HEAD
-        $error = block_onlinesurvey_print_exceptions($err);
+        $error = block_onlinesurveyqa_print_exceptions($err);
 =======
         $error = block_onlinesurveyqa_print_exceptions($err);
 >>>>>>> Initial commit
@@ -644,7 +644,7 @@ function block_onlinesurveyqa_handle_error($err) {
  * @return string formatted error message of the excetion
  */
 <<<<<<< HEAD
-function block_onlinesurvey_print_exceptions($e) {
+function block_onlinesurveyqa_print_exceptions($e) {
 =======
 function block_onlinesurveyqa_print_exceptions($e) {
 >>>>>>> Initial commit
@@ -653,7 +653,7 @@ function block_onlinesurveyqa_print_exceptions($e) {
 
         $context = context_system::instance();
 <<<<<<< HEAD
-        if (has_capability('block/onlinesurvey:view_debugdetails', $context)) {
+        if (has_capability('block/onlinesurveyqa:view_debugdetails', $context)) {
 =======
         if (has_capability('block/onlinesurveyqa:view_debugdetails', $context)) {
 >>>>>>> Initial commit
@@ -683,7 +683,7 @@ function block_onlinesurveyqa_print_exceptions($e) {
  * Performs a second request via curl to check the result for learner content in order to include code to display popupinfo dialog -
  * if option is selected in the settings.
 <<<<<<< HEAD
- * @param string $config block settings of "block_onlinesurvey"
+ * @param string $config block settings of "block_onlinesurveyqa"
 =======
  * @param string $config block settings of "block_onlinesurveyqa"
 >>>>>>> Initial commit
@@ -693,7 +693,7 @@ function block_onlinesurveyqa_print_exceptions($e) {
  * @return string
  */
 <<<<<<< HEAD
-function block_onlinesurvey_get_lti_content($config = null, $context = null, $course = null, $modalzoom = 0) {
+function block_onlinesurveyqa_get_lti_content($config = null, $context = null, $course = null, $modalzoom = 0) {
 =======
 function block_onlinesurveyqa_get_lti_content($config = null, $context = null, $course = null, $modalzoom = 0) {
 >>>>>>> Initial commit
@@ -703,7 +703,7 @@ function block_onlinesurveyqa_get_lti_content($config = null, $context = null, $
 
     if (empty($config)) {
 <<<<<<< HEAD
-        $config = get_config("block_onlinesurvey");
+        $config = get_config("block_onlinesurveyqa");
 =======
         $config = get_config("block_onlinesurveyqa");
 >>>>>>> Initial commit
@@ -712,7 +712,7 @@ function block_onlinesurveyqa_get_lti_content($config = null, $context = null, $
     $courseid = (!empty($course->id)) ? $course->id : 1;
 
 <<<<<<< HEAD
-    list($endpoint, $parameter) = block_onlinesurvey_get_launch_data($config, $context, $course);
+    list($endpoint, $parameter) = block_onlinesurveyqa_get_launch_data($config, $context, $course);
 =======
     list($endpoint, $parameter) = block_onlinesurveyqa_get_launch_data($config, $context, $course);
 >>>>>>> Initial commit
@@ -724,7 +724,7 @@ function block_onlinesurveyqa_get_lti_content($config = null, $context = null, $
     // Check for learner content in LTI result.
     try {
 <<<<<<< HEAD
-        $content2 = block_onlinesurvey_lti_post_launch_html_curl($parameter, $endpoint, $config);
+        $content2 = block_onlinesurveyqa_lti_post_launch_html_curl($parameter, $endpoint, $config);
 =======
         $content2 = block_onlinesurveyqa_lti_post_launch_html_curl($parameter, $endpoint, $config);
 >>>>>>> Initial commit
@@ -743,7 +743,7 @@ function block_onlinesurveyqa_get_lti_content($config = null, $context = null, $
             // No regex in config -> use default regex.
         } else {
 <<<<<<< HEAD
-            $re = BLOCK_ONLINESURVEY_LTI_REGEX_LEARNER_DEFAULT;
+            $re = BLOCK_ONLINESURVEYQA_LTI_REGEX_LEARNER_DEFAULT;
 =======
             $re = BLOCK_onlinesurveyqa_LTI_REGEX_LEARNER_DEFAULT;
 >>>>>>> Initial commit
@@ -753,7 +753,7 @@ function block_onlinesurveyqa_get_lti_content($config = null, $context = null, $
             $surveycount = preg_match_all($re, $content2, $matches, PREG_SET_ORDER, 0);
 
 <<<<<<< HEAD
-            $SESSION->block_onlinesurvey_curl_checked = true;
+            $SESSION->block_onlinesurveyqa_curl_checked = true;
 =======
             $SESSION->block_onlinesurveyqa_curl_checked = true;
 >>>>>>> Initial commit
@@ -771,7 +771,7 @@ function block_onlinesurveyqa_get_lti_content($config = null, $context = null, $
             // No regex in config -> use default regex.
         } else {
 <<<<<<< HEAD
-            $reinstructor = BLOCK_ONLINESURVEY_LTI_REGEX_INSTRUCTOR_DEFAULT;
+            $reinstructor = BLOCK_ONLINESURVEYQA_LTI_REGEX_INSTRUCTOR_DEFAULT;
         }
         if (!empty($reinstructor)) {
             $surveycount += preg_match_all($reinstructor, $content2, $matches, PREG_SET_ORDER, 0);
@@ -788,21 +788,21 @@ function block_onlinesurveyqa_get_lti_content($config = null, $context = null, $
 
     if ($config->survey_hide_empty && $surveycount > 0 && !$modalzoom) {
 <<<<<<< HEAD
-        $lticontentstr .= block_onlinesurvey_viewscript();
+        $lticontentstr .= block_onlinesurveyqa_viewscript();
     }
 
     if (!$config->offer_zoom && $surveycount > 0 && !$modalzoom) {
-        $lticontentstr .= block_onlinesurvey_surveybuttonscript();
+        $lticontentstr .= block_onlinesurveyqa_surveybuttonscript();
     }
 
     if ($surveycount > 0 && !$modalzoom) {
-        $lticontentstr .= block_onlinesurvey_highlightscript($surveycount);
+        $lticontentstr .= block_onlinesurveyqa_highlightscript($surveycount);
     } else if ($surveycount == 0 && !$modalzoom) {
-        $lticontentstr .= block_onlinesurvey_donthighlightscript();
+        $lticontentstr .= block_onlinesurveyqa_donthighlightscript();
     }
 
-    if ($config->presentation == BLOCK_ONLINESURVEY_PRESENTATION_BRIEF && !$modalzoom) {
-        $lticontentstr .= block_onlinesurvey_createsummary($surveycount);
+    if ($config->presentation == BLOCK_ONLINESURVEYQA_PRESENTATION_BRIEF && !$modalzoom) {
+        $lticontentstr .= block_onlinesurveyqa_createsummary($surveycount);
 =======
         $lticontentstr .= block_onlinesurveyqa_viewscript();
     }
@@ -825,10 +825,10 @@ function block_onlinesurveyqa_get_lti_content($config = null, $context = null, $
             $context = context_system::instance();
         }
 <<<<<<< HEAD
-        if (empty($debuglaunch) || has_capability('block/onlinesurvey:view_debugdetails', $context)) {
+        if (empty($debuglaunch) || has_capability('block/onlinesurveyqa:view_debugdetails', $context)) {
             $lticontentstr .= lti_post_launch_html($parameter, $endpoint, $debuglaunch);
 
-            if ($debuglaunch && has_capability('block/onlinesurvey:view_debugdetails', $context)) {
+            if ($debuglaunch && has_capability('block/onlinesurveyqa:view_debugdetails', $context)) {
 =======
         if (empty($debuglaunch) || has_capability('block/onlinesurveyqa:view_debugdetails', $context)) {
             $lticontentstr .= lti_post_launch_html($parameter, $endpoint, $debuglaunch);
@@ -841,7 +841,7 @@ function block_onlinesurveyqa_get_lti_content($config = null, $context = null, $
             }
         } else {
 <<<<<<< HEAD
-            $lticontentstr = get_string('error_debugmode_missing_capability', 'block_onlinesurvey');
+            $lticontentstr = get_string('error_debugmode_missing_capability', 'block_onlinesurveyqa');
 =======
             $lticontentstr = get_string('error_debugmode_missing_capability', 'block_onlinesurveyqa');
 >>>>>>> Initial commit
@@ -855,7 +855,7 @@ function block_onlinesurveyqa_get_lti_content($config = null, $context = null, $
  * Return the endpoint and parameter for lti request based on the block settings.
  * This function uses '/mod/lti/locallib.php'.
 <<<<<<< HEAD
- * @param string $config block settings of "block_onlinesurvey"
+ * @param string $config block settings of "block_onlinesurveyqa"
 =======
  * @param string $config block settings of "block_onlinesurveyqa"
 >>>>>>> Initial commit
@@ -864,7 +864,7 @@ function block_onlinesurveyqa_get_lti_content($config = null, $context = null, $
  * @return multitype:string
  */
 <<<<<<< HEAD
-function block_onlinesurvey_get_launch_data($config = null, $context = null, $course = null) {
+function block_onlinesurveyqa_get_launch_data($config = null, $context = null, $course = null) {
 =======
 function block_onlinesurveyqa_get_launch_data($config = null, $context = null, $course = null) {
 >>>>>>> Initial commit
@@ -874,7 +874,7 @@ function block_onlinesurveyqa_get_launch_data($config = null, $context = null, $
 
     if (empty($config)) {
 <<<<<<< HEAD
-        $config = get_config("block_onlinesurvey");
+        $config = get_config("block_onlinesurveyqa");
 =======
         $config = get_config("block_onlinesurveyqa");
 >>>>>>> Initial commit
@@ -922,7 +922,7 @@ function block_onlinesurveyqa_get_launch_data($config = null, $context = null, $
     }
 
 <<<<<<< HEAD
-    $allparams = block_onlinesurvey_build_request_lti($config, $course);
+    $allparams = block_onlinesurveyqa_build_request_lti($config, $course);
 =======
     $allparams = block_onlinesurveyqa_build_request_lti($config, $course);
 >>>>>>> Initial commit
@@ -982,14 +982,14 @@ function block_onlinesurveyqa_get_launch_data($config = null, $context = null, $
 /**
  * Builds array of parameters for the LTI request
 <<<<<<< HEAD
- * @param object $config block settings of "block_onlinesurvey"
+ * @param object $config block settings of "block_onlinesurveyqa"
  * @param object $course course that is used for some context attributes
  * @return multitype:string NULL
  */
-function block_onlinesurvey_build_request_lti($config, $course) {
+function block_onlinesurveyqa_build_request_lti($config, $course) {
     global $USER;
 
-    $roles = block_onlinesurvey_get_ims_roles($USER, $config);
+    $roles = block_onlinesurveyqa_get_ims_roles($USER, $config);
 =======
  * @param object $config block settings of "block_onlinesurveyqa"
  * @param object $course course that is used for some context attributes
@@ -1051,10 +1051,10 @@ function block_onlinesurveyqa_build_request_lti($config, $course) {
  *
  * @param object $user user object
 <<<<<<< HEAD
- * @param object $config block settings of "block_onlinesurvey"
+ * @param object $config block settings of "block_onlinesurveyqa"
  * @return string A role string suitable for passing with an LTI launch
  */
-function block_onlinesurvey_get_ims_roles($user, $config) {
+function block_onlinesurveyqa_get_ims_roles($user, $config) {
 =======
  * @param object $config block settings of "block_onlinesurveyqa"
  * @return string A role string suitable for passing with an LTI launch
@@ -1119,7 +1119,7 @@ function block_onlinesurveyqa_get_ims_roles($user, $config) {
  * @return string result of the curl LTI request
  */
 <<<<<<< HEAD
-function block_onlinesurvey_lti_post_launch_html_curl($parameter, $endpoint, $config) {
+function block_onlinesurveyqa_lti_post_launch_html_curl($parameter, $endpoint, $config) {
 =======
 function block_onlinesurveyqa_lti_post_launch_html_curl($parameter, $endpoint, $config) {
 >>>>>>> Initial commit
@@ -1144,7 +1144,7 @@ function block_onlinesurveyqa_lti_post_launch_html_curl($parameter, $endpoint, $
     $fieldsstring = rtrim($fieldsstring, '&');
 
     $curl = new curl;
-    $timeout = isset($config->survey_timeout) ? $config->survey_timeout : BLOCK_ONLINESURVEY_DEFAULT_TIMEOUT;
+    $timeout = isset($config->survey_timeout) ? $config->survey_timeout : BLOCK_ONLINESURVEYQA_DEFAULT_TIMEOUT;
 =======
     rtrim($fieldsstring, '&');
 
@@ -1160,10 +1160,10 @@ function block_onlinesurveyqa_lti_post_launch_html_curl($parameter, $endpoint, $
 
     if ($errornumber = $curl->get_errno()) {
 <<<<<<< HEAD
-        $msgoutput = get_string('error_survey_curl_timeout_msg', 'block_onlinesurvey');
+        $msgoutput = get_string('error_survey_curl_timeout_msg', 'block_onlinesurveyqa');
 
         $context = context_system::instance();
-        if (has_capability('block/onlinesurvey:view_debugdetails', $context)) {
+        if (has_capability('block/onlinesurveyqa:view_debugdetails', $context)) {
 =======
         $msgoutput = get_string('error_survey_curl_timeout_msg', 'block_onlinesurveyqa');
 
