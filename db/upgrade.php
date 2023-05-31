@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Plugin "Evaluations (evasys)"
+ * Plugin "Evaluations (evasys) QAHE"
  *
  * @package    block_onlinesurveyqa
  * @copyright  2020 Alexander Bias on behalf of evasys GmbH

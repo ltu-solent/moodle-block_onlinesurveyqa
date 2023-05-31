@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Plugin "Evaluations (evasys)"
+ * Plugin "Evaluations (evasys) QAHE"
  *
  * @package    block_onlinesurveyqa
  * @copyright  2018 Soon Systems GmbH on behalf of evasys GmbH
@@ -28,7 +28,7 @@ defined('MOODLE_INTERNAL') || die();
 /* General.
 /*************************/
 
-$string['pluginname'] = 'Evaluations (evasys)';
+$string['pluginname'] = 'Evaluations (evasys) QAHE';
 $string['lti'] = 'LTI';
 $string['soap'] = 'SOAP';
 
@@ -164,9 +164,9 @@ $string['setting_lti_regex_instructor_desc'] = 'Regular expression which searche
 /* Capabilities.
 /*************************/
 
-$string['onlinesurveyqa:addinstance'] = 'Add instance of the Evaluations (evasys) block';
-$string['onlinesurveyqa:myaddinstance'] = 'Add instance of the Evaluations (evasys) block to my page';
-$string['onlinesurveyqa:view'] = 'View Evaluations (evasys) block';
+$string['onlinesurveyqa:addinstance'] = 'Add instance of the Evaluations (evasys) QAHE block';
+$string['onlinesurveyqa:myaddinstance'] = 'Add instance of the Evaluations (evasys) QAHE block to my page';
+$string['onlinesurveyqa:view'] = 'View Evaluations (evasys) QAHE block';
 $string['onlinesurveyqa:view_debugdetails'] = 'View debug details';
 
 
